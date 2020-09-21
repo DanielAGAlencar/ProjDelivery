@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DadosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="formapagto">
+    <Key>
+      <PropertyRef Name="descricao" />
+    </Key>
+    <Property Name="descricao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="formapagtopedido" Relationship="Self.fk_formapagto" FromRole="formapagto" ToRole="formapagtopedido" />
+  </EntityType>
+  <EntityType Name="formapagtopedido">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fkpedido" Type="Int32" />
+    <Property Name="fkformapagto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="formapagto" Relationship="Self.fk_formapagto" FromRole="formapagtopedido" ToRole="formapagto" />
+    <NavigationProperty Name="pedido" Relationship="Self.fk_PedidoF" FromRole="formapagtopedido" ToRole="pedido" />
+  </EntityType>
+  <EntityType Name="item">
+    <Key>
+      <PropertyRef Name="descricao" />
+    </Key>
+    <Property Name="descricao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="valor" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="tipo" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="pedidoitem" Relationship="Self.fk_item" FromRole="item" ToRole="pedidoitem" />
+  </EntityType>
+  <EntityType Name="pedido">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="obs" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="total" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="desconto" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="totalliquido" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="situacao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="formapagtopedido" Relationship="Self.fk_PedidoF" FromRole="pedido" ToRole="formapagtopedido" />
+    <NavigationProperty Name="pedidoitem" Relationship="Self.fk_Pedido" FromRole="pedido" ToRole="pedidoitem" />
+  </EntityType>
+  <EntityType Name="pedidoitem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fkpedido" Type="Int32" />
+    <Property Name="fkitem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="quatidade" Type="Int32" />
+    <Property Name="valor" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="total" Type="Decimal" Precision="6" Scale="2" />
+    <NavigationProperty Name="item" Relationship="Self.fk_item" FromRole="pedidoitem" ToRole="item" />
+    <NavigationProperty Name="pedido" Relationship="Self.fk_Pedido" FromRole="pedidoitem" ToRole="pedido" />
+  </EntityType>
+  <Association Name="fk_formapagto">
+    <End Role="formapagto" Type="Self.formapagto" Multiplicity="0..1" />
+    <End Role="formapagtopedido" Type="Self.formapagtopedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="formapagto">
+        <PropertyRef Name="descricao" />
+      </Principal>
+      <Dependent Role="formapagtopedido">
+        <PropertyRef Name="fkformapagto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_PedidoF">
+    <End Role="pedido" Type="Self.pedido" Multiplicity="0..1" />
+    <End Role="formapagtopedido" Type="Self.formapagtopedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pedido">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="formapagtopedido">
+        <PropertyRef Name="fkpedido" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_item">
+    <End Role="item" Type="Self.item" Multiplicity="0..1" />
+    <End Role="pedidoitem" Type="Self.pedidoitem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="item">
+        <PropertyRef Name="descricao" />
+      </Principal>
+      <Dependent Role="pedidoitem">
+        <PropertyRef Name="fkitem" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Pedido">
+    <End Role="pedido" Type="Self.pedido" Multiplicity="0..1" />
+    <End Role="pedidoitem" Type="Self.pedidoitem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pedido">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="pedidoitem">
+        <PropertyRef Name="fkpedido" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DadosEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="formapagto" EntityType="Self.formapagto" />
+    <EntitySet Name="formapagtopedido" EntityType="Self.formapagtopedido" />
+    <EntitySet Name="item" EntityType="Self.item" />
+    <EntitySet Name="pedido" EntityType="Self.pedido" />
+    <EntitySet Name="pedidoitem" EntityType="Self.pedidoitem" />
+    <AssociationSet Name="fk_formapagto" Association="Self.fk_formapagto">
+      <End Role="formapagto" EntitySet="formapagto" />
+      <End Role="formapagtopedido" EntitySet="formapagtopedido" />
+    </AssociationSet>
+    <AssociationSet Name="fk_PedidoF" Association="Self.fk_PedidoF">
+      <End Role="pedido" EntitySet="pedido" />
+      <End Role="formapagtopedido" EntitySet="formapagtopedido" />
+    </AssociationSet>
+    <AssociationSet Name="fk_item" Association="Self.fk_item">
+      <End Role="item" EntitySet="item" />
+      <End Role="pedidoitem" EntitySet="pedidoitem" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Pedido" Association="Self.fk_Pedido">
+      <End Role="pedido" EntitySet="pedido" />
+      <End Role="pedidoitem" EntitySet="pedidoitem" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

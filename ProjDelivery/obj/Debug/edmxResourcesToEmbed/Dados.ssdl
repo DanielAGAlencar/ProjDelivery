@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DadosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="formapagto">
+    <Key>
+      <PropertyRef Name="descricao" />
+    </Key>
+    <Property Name="descricao" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="formapagtopedido">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fkpedido" Type="int" />
+    <Property Name="fkformapagto" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="item">
+    <Key>
+      <PropertyRef Name="descricao" />
+    </Key>
+    <Property Name="descricao" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="valor" Type="decimal" Precision="6" Scale="2" />
+    <Property Name="tipo" Type="varchar" MaxLength="80" />
+  </EntityType>
+  <EntityType Name="pedido">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="obs" Type="varchar" MaxLength="300" />
+    <Property Name="total" Type="decimal" Precision="6" Scale="2" />
+    <Property Name="desconto" Type="decimal" Precision="6" Scale="2" />
+    <Property Name="totalliquido" Type="decimal" Precision="6" Scale="2" />
+    <Property Name="situacao" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="pedidoitem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fkpedido" Type="int" />
+    <Property Name="fkitem" Type="varchar" MaxLength="50" />
+    <Property Name="quatidade" Type="int" />
+    <Property Name="valor" Type="decimal" Precision="6" Scale="2" />
+    <Property Name="total" Type="decimal" Precision="6" Scale="2" />
+  </EntityType>
+  <Association Name="fk_formapagto">
+    <End Role="formapagto" Type="Self.formapagto" Multiplicity="0..1" />
+    <End Role="formapagtopedido" Type="Self.formapagtopedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="formapagto">
+        <PropertyRef Name="descricao" />
+      </Principal>
+      <Dependent Role="formapagtopedido">
+        <PropertyRef Name="fkformapagto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_item">
+    <End Role="item" Type="Self.item" Multiplicity="0..1" />
+    <End Role="pedidoitem" Type="Self.pedidoitem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="item">
+        <PropertyRef Name="descricao" />
+      </Principal>
+      <Dependent Role="pedidoitem">
+        <PropertyRef Name="fkitem" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Pedido">
+    <End Role="pedido" Type="Self.pedido" Multiplicity="0..1" />
+    <End Role="pedidoitem" Type="Self.pedidoitem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pedido">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="pedidoitem">
+        <PropertyRef Name="fkpedido" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_PedidoF">
+    <End Role="pedido" Type="Self.pedido" Multiplicity="0..1" />
+    <End Role="formapagtopedido" Type="Self.formapagtopedido" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pedido">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="formapagtopedido">
+        <PropertyRef Name="fkpedido" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DadosModelStoreContainer">
+    <EntitySet Name="formapagto" EntityType="Self.formapagto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="formapagtopedido" EntityType="Self.formapagtopedido" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="item" EntityType="Self.item" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="pedido" EntityType="Self.pedido" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="pedidoitem" EntityType="Self.pedidoitem" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_formapagto" Association="Self.fk_formapagto">
+      <End Role="formapagto" EntitySet="formapagto" />
+      <End Role="formapagtopedido" EntitySet="formapagtopedido" />
+    </AssociationSet>
+    <AssociationSet Name="fk_item" Association="Self.fk_item">
+      <End Role="item" EntitySet="item" />
+      <End Role="pedidoitem" EntitySet="pedidoitem" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Pedido" Association="Self.fk_Pedido">
+      <End Role="pedido" EntitySet="pedido" />
+      <End Role="pedidoitem" EntitySet="pedidoitem" />
+    </AssociationSet>
+    <AssociationSet Name="fk_PedidoF" Association="Self.fk_PedidoF">
+      <End Role="pedido" EntitySet="pedido" />
+      <End Role="formapagtopedido" EntitySet="formapagtopedido" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
