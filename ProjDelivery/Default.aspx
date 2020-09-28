@@ -6,6 +6,7 @@
     <p>
         <asp:Image ID="Image1" runat="server" Height="600px" ImageUrl="~/img/Copy-of-Imagens-para-o-Restaurantes-de-Sucesso-20.png" Width="1150px" />
         <br />
+        <%--<img src="img/copy-of-imagens-para-o-restaurantes-de-sucesso-20.png" class="img-fluid" alt="responsive image">--%>
     </p>
 </form>
 </asp:Content>

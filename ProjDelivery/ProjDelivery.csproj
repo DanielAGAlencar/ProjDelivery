@@ -81,6 +81,12 @@
     </Content>
     <Content Include="CadastroFormaPagto.aspx" />
     <Content Include="CadastroItem.aspx" />
+    <Content Include="css\bootstrap-grid.css" />
+    <Content Include="css\bootstrap-grid.min.css" />
+    <Content Include="css\bootstrap-reboot.css" />
+    <Content Include="css\bootstrap-reboot.min.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\bootstrap.min.css" />
     <Content Include="Dados.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Dados.edmx</DependentUpon>
@@ -92,6 +98,7 @@
       <LastGenOutput>Dados.cs</LastGenOutput>
     </Content>
     <Content Include="Default.aspx" />
+    <Content Include="Docum\Diagrama Entidade-Relacionamento.jpg" />
     <Content Include="img\cancela.png" />
     <Content Include="img\Copy-of-Imagens-para-o-Restaurantes-de-Sucesso-20.png" />
     <Content Include="img\delete.png" />
@@ -99,6 +106,13 @@
     <Content Include="img\DocumentEdit_40924.png" />
     <Content Include="img\entrega.jpg" />
     <Content Include="img\plus.png" />
+    <Content Include="js\bootstrap.min.css" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\jquery-2.1.1.js" />
+    <Content Include="js\jquery-2.1.1.min.js" />
+    <Content Include="js\jquery.validate.js" />
+    <Content Include="js\script.js" />
+    <Content Include="js\scripts.js" />
     <Content Include="ListarPedido.aspx" />
     <Content Include="Pagamento.aspx" />
     <Content Include="Pedido.aspx" />
@@ -202,6 +216,12 @@
     <Content Include="Dados.edmx.diagram">
       <DependentUpon>Dados.edmx</DependentUpon>
     </Content>
+    <Content Include="css\bootstrap-grid.css.map" />
+    <Content Include="css\bootstrap-grid.min.css.map" />
+    <Content Include="css\bootstrap-reboot.css.map" />
+    <Content Include="css\bootstrap-reboot.min.css.map" />
+    <Content Include="css\bootstrap.css.map" />
+    <Content Include="css\bootstrap.min.css.map" />
     <None Include="packages.config" />
     <Content Include="Principal.Master" />
     <None Include="Web.Debug.config">
@@ -214,6 +234,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

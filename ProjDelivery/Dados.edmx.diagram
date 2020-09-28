@@ -4,12 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2be64a37f6504fcf8ee07a59650be690" Name="Diagram1">
+      <Diagram DiagramId="2be64a37f6504fcf8ee07a59650be690" Name="Diagram1" ZoomLevel="74">
         <EntityTypeShape EntityType="DadosModel.formapagto" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DadosModel.formapagtopedido" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
-        <EntityTypeShape EntityType="DadosModel.item" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DadosModel.formapagtopedido" Width="1.5" PointX="5.125" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DadosModel.item" Width="1.5" PointX="10" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="DadosModel.pedido" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DadosModel.pedidoitem" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DadosModel.pedidoitem" Width="1.5" PointX="7.625" PointY="2.625" IsExpanded="true" />
         <AssociationConnector Association="DadosModel.fk_formapagto" ManuallyRouted="false" />
         <AssociationConnector Association="DadosModel.fk_PedidoF" ManuallyRouted="false" />
         <AssociationConnector Association="DadosModel.fk_item" ManuallyRouted="false" />
