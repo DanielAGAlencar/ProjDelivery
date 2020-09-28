@@ -2,6 +2,22 @@
 
 <!DOCTYPE html>
 
+<script type="text/javascript">
+    function MostrarModal() {
+        $("#modalMsg").modal('show');
+    }
+</script>
+<script type="text/javascript">
+    function MostrarModalCancelar() {
+        $("#modalMsgCancelar").modal('show');
+    }
+</script>
+<script type="text/javascript">
+    function MostrarSituacaoPedido() {
+        $("#modalMsgSituacaoPedido").modal('show');
+    }
+</script>
+
 <html>
 <head runat="server">
     <title></title>
@@ -29,6 +45,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="Default.aspx">Principal</a></li>
+                    <li><a href="ListarPedido.aspx">Listar Pedidos</a></li>
                     <li><a href="Pedido.aspx">Criação de Pedido</a></li>
                     <li><a href="CadastroItem.aspx">Cadastro de Item</a></li>
                     <li><a href="CadastroFormaPagto.aspx">Cadastro de Forma de Pagamento</a></li>

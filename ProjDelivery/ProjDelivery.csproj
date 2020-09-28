@@ -92,9 +92,15 @@
       <LastGenOutput>Dados.cs</LastGenOutput>
     </Content>
     <Content Include="Default.aspx" />
+    <Content Include="img\cancela.png" />
+    <Content Include="img\Copy-of-Imagens-para-o-Restaurantes-de-Sucesso-20.png" />
+    <Content Include="img\delete.png" />
     <Content Include="img\delete_4219.png" />
     <Content Include="img\DocumentEdit_40924.png" />
+    <Content Include="img\entrega.jpg" />
     <Content Include="img\plus.png" />
+    <Content Include="ListarPedido.aspx" />
+    <Content Include="Pagamento.aspx" />
     <Content Include="Pedido.aspx" />
     <Content Include="PedidoItem.aspx" />
     <Content Include="Web.config" />
@@ -144,6 +150,20 @@
     </Compile>
     <Compile Include="item.cs">
       <DependentUpon>Dados.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ListarPedido.aspx.cs">
+      <DependentUpon>ListarPedido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListarPedido.aspx.designer.cs">
+      <DependentUpon>ListarPedido.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pagamento.aspx.cs">
+      <DependentUpon>Pagamento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pagamento.aspx.designer.cs">
+      <DependentUpon>Pagamento.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pedido.aspx.cs">
       <DependentUpon>Pedido.aspx</DependentUpon>

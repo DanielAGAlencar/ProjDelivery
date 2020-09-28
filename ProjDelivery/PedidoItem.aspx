@@ -20,6 +20,18 @@
                     <br />
                     <div class="form-group">
                         Itens<br />
+             
+                        <br />
+             
+                        <br />
+                        &nbsp;&nbsp;<table style="width:100%;">
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td aria-orientation="horizontal">&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>
                         <asp:GridView ID="GDVItemSalada" CssClass="table" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" OnRowCommand="GDVItemSalada_RowCommand">
                             <AlternatingRowStyle BackColor="White" />
                             <Columns>
@@ -40,20 +52,22 @@
                             <SortedDescendingHeaderStyle BackColor="#4870BE" />
                         </asp:GridView>
              
-                        <br />
-                        <asp:GridView ID="GVDItemPedido" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="393px" >
+                                </td>
+                                <td>
+                        <asp:GridView ID="GVDItemPedido" runat="server" CssClass="table" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnRowCommand="GDVItemPedido_RowCommand" >
                             <AlternatingRowStyle BackColor="White" />
                             <Columns>
                                 <asp:BoundField DataField="Id" HeaderText="Id" />
                                 <asp:BoundField DataField="fkpedido" HeaderText="Pedido" />
                                 <asp:BoundField DataField="fkitem" HeaderText="Item" />
                                 <asp:BoundField DataField="quatidade" HeaderText="Quantidade" />
-                                <asp:BoundField DataField="valor" HeaderText="Valor" />
+                                <asp:BoundField DataField="valor" HeaderText="Valor" />                                
+                                <asp:ButtonField ButtonType="Image" CommandName="B" ImageUrl="~/img/delete_4219.png" Text="Excluir" />
                             </Columns>
                             <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
                             <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
                             <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
-                            <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+                            <RowStyle BackColor="#FFFBD6" ForeColor="#333333" Height="53px" />
                             <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
                             <SortedAscendingCellStyle BackColor="#FDF5AC" />
                             <SortedAscendingHeaderStyle BackColor="#4D0000" />
@@ -61,18 +75,22 @@
                             <SortedDescendingHeaderStyle BackColor="#820000" />
                         </asp:GridView>
              
-                        <br />
-                        &nbsp;&nbsp;</div>
-                    <br />
-    &nbsp;<div class="form-group">
+                                </td>
+                                <td>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                        </table>
                     </div>
-                </div>
+                    <br />
+    &nbsp;</div>
                 <div class="col-sm-2">
                     <div class="form-group">
+                        <asp:Button ID="BtnPagar" runat="server" class="btn btn-success" OnClick="BtnPagar_Click" Text="Pagar" />
                         <br />
-                        &nbsp;
-                        &nbsp;
-                        &nbsp;
                         </div>
                 </div>
             </div>

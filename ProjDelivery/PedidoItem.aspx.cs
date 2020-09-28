@@ -85,31 +85,37 @@ namespace ProjDelivery
                 pedido.totalliquido = pedido.total - pedido.desconto;
 
                 // Salva os dados
-                context.SaveChanges();
+                context.SaveChanges();                
                 LoadTable();
 
             }
-
-
+            
         }
 
-        /*protected void GDVItemPedido_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void GDVItemPedido_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             string idPedido = Request.QueryString["idPedido"];
             int line = int.Parse(e.CommandArgument.ToString());
-            int Id = string.Format(GDVItemPedido.Rows[line].Cells[0].Text);
-
+            int id = int.Parse(GVDItemPedido.Rows[line].Cells[0].Text);
+            // Excluir item
             DadosEntities context = new DadosEntities();
-            pedidoitem pedidoitem = context.pedidoitem.First(c => c.fkpedido == idPedido);
-        }*/
+            pedidoitem pedidoitem = context.pedidoitem.First(c => c.Id == id);
+            context.pedidoitem.Remove(pedidoitem);
 
-        // Confirmação de exclusão
-            private void DisplayModal(Page page)
+            // Update nos valores do Pedido
+            DadosEntities p = new DadosEntities();
+            int idNew = int.Parse(idPedido);
+            pedido pedido = context.pedido.First(d => d.Id == idNew);
+            pedido.total = pedido.total - pedidoitem.valor;
+            pedido.totalliquido = pedido.total - pedido.desconto;
+
+            context.SaveChanges();
+            LoadTable();
+        }
+        protected void BtnPagar_Click(object sender, EventArgs e)
         {
-            ClientScript.RegisterStartupScript(typeof(Page),
-                                               Guid.NewGuid().ToString(),
-                                               "MostrarModal();",
-                                               true);
+            string idPedido = Request.QueryString["idPedido"];
+            Response.Redirect("Pagamento.aspx?idPedido=" + idPedido);
         }
 
     }

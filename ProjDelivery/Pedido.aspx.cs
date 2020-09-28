@@ -31,24 +31,10 @@ namespace ProjDelivery
                 totalliquido = 0,
                 situacao = string.Format("Rascunho")
             };
-
-            if (String.IsNullOrEmpty(IdPedido))
-            {
-                context.pedido.Add(pedido);
-                context.SaveChanges();
-                //lblMSG.Text = "Pedido Criado!";
-                int id = pedido.Id;
-                //lblID.Text = "Numero do Pedido: " + id.ToString();
-                Response.Redirect("PedidoItem.aspx?idPedido=" + id);
-            }
-            else
-            {
-                String PedidoNew = IdPedido;
-                pedido b = context.pedido.First(c => c.obs == PedidoNew);
-                b.obs = TxtObs.Text;
-                lblMSG.Text = "Registro Atualizado!";
-            }
+            context.pedido.Add(pedido);
             context.SaveChanges();
+            int id = pedido.Id;
+            Response.Redirect("PedidoItem.aspx?idPedido=" + id);         
 
         }
 
